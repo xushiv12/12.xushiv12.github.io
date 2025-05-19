@@ -1,0 +1,51 @@
+
+
+<style>
+h1{
+	color:red;
+	}
+h2{
+	color:green;
+	}
+body{
+	background-color:yellow;
+	}
+button{
+	background-color:lime;
+	width:100px;
+	height:30px;
+	}
+</style>
+<link rel="shortcut icon" href="https://tse2.mm.bing.net/th?id=OIP.D-YYOmIN-VH_gabddbJ77wHaHa&r=0&w=474&h=474&c=7">
+<title>Xuchat v2</title>
+<body>
+<h1>Xuchat v2!</h1>
+<h2>在这里用新版Xuchat发送信息</h2>
+信息:<input id="o"><br>
+发给谁:<input id="u"><br>
+	<button onclick="A()">发送</button>
+<script>
+function A(){
+let y=document.getElementById("u").value;
+let x=document.getElementById("o").value;
+fetch("https://v4.xushi-1009.cc/", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    version: "v1.0",
+    messageto: [y, x]
+  })
+})
+.then(response => response.json())
+.then(data => {
+  console.log("✅ 服务器返回：", data);
+})
+.catch(error => {
+  console.log("❌ 发送失败：", error);
+});
+}
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"940f70ce6e43fa4a","version":"2025.4.0-1-g37f21b1","r":1,"token":"d7b6eff7c2a94d32972a729876ccb3e0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
+</body>
