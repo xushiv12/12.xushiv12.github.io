@@ -24,8 +24,9 @@ button{
 信息:<input id="o"><br>
 发给谁:<input id="u"><br>
 	<button onclick="A()">发送</button>
-	<button onclick="B()">发送链接,在输入框里输入链接地址</button>
-	<button onclick="C()">发送JPNG图片,在输入框里输入图片的base64</button>
+	<button onclick="B()">发送链接,输入链接地址</button>
+	<button onclick="C()">发送图片,输入图片的base64</button>
+	<button onclick="D()">用语音输入</button>
 <script>
 function A(){
 let y=document.getElementById("u").value;
@@ -90,7 +91,18 @@ fetch("https://v4.xushi-1009.cc/", {
   console.log("❌ 发送失败：", error);
 });
 }
+function D() {
+  let x = new webkitSpeechRecognition();
+  x.lang = 'zh-CN'; 
+  x.interimResult = false; 
 
+  x.start();
+
+  x.onresult = function(ccy) {
+    let xu= ccy.results[0][0].transcript; 
+    document.getElementById("o").value = xu;
+  };
+}
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"940f70ce6e43fa4a","version":"2025.4.0-1-g37f21b1","r":1,"token":"d7b6eff7c2a94d32972a729876ccb3e0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
 </body>
