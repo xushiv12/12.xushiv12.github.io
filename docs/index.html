@@ -17,9 +17,9 @@ button{
 	}
 </style>
 <link rel="shortcut icon" href="https://tse2.mm.bing.net/th?id=OIP.D-YYOmIN-VH_gabddbJ77wHaHa&r=0&w=474&h=474&c=7">
-<title>v4，保存信息版本</title>
+<title>v6版本</title>
 <body>
-<h1>Xuchat v4!</h1>
+<h1>Xuchat v6!</h1>
 <h2>在这里用新版Xuchat发送信息</h2>
 信息:<input id="o"><br>
 发给谁:<input id="u"><br>
@@ -115,7 +115,7 @@ fetch("https://v4.xushi-1009.cc/", {
   },
   body: JSON.stringify({
     version: "v1.0",
-    messageto: [y,`<img src="data:video/mp4;base64,${x}">`]
+    messageto: [y,`<iframe src="data:video/mp4;base64,${x}"></iframe>`]
   })
 })
 .then(response => response.json())
@@ -136,7 +136,7 @@ fetch("https://v4.xushi-1009.cc/", {
   },
   body: JSON.stringify({
     version: "v1.0",
-    messageto: [y,`<ifarme src="${x}"></iframe>`]
+    messageto: [y,`<iframe src="${x}"></iframe>`]
   })
 })
 .then(response => response.json())
