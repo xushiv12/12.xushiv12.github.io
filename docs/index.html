@@ -26,7 +26,9 @@ button{
 	<button onclick="A()">发送</button>
 	<button onclick="B()">发送链接,输入链接地址</button>
 	<button onclick="C()">发送图片,输入图片的base64</button>
+	<button onclick="E()">发送视频,输入视频的base64</button>
 	<button onclick="D()">用语音输入</button>
+	<button onclick="F()">发送视频,输入视频的URL</button>
 <script>
 function A(){
 let y=document.getElementById("u").value;
@@ -102,6 +104,48 @@ function D() {
     let xu= ccy.results[0][0].transcript; 
     document.getElementById("o").value = xu;
   };
+}
+function E() {
+ let y=document.getElementById("u").value;
+let x=document.getElementById("o").value;
+fetch("https://v4.xushi-1009.cc/", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    version: "v1.0",
+    messageto: [y,`<img src="data:video/mp4;base64,${x}">`]
+  })
+})
+.then(response => response.json())
+.then(data => {
+  console.log("✅ 服务器返回：", data);
+})
+.catch(error => {
+  console.log("❌ 发送失败：", error);
+});
+}
+function F(){
+let y=document.getElementById("u").value;
+let x=document.getElementById("o").value;
+fetch("https://v4.xushi-1009.cc/", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    version: "v1.0",
+    messageto: [y,`<img src="${x}">`]
+  })
+})
+.then(response => response.json())
+.then(data => {
+  console.log("✅ 服务器返回：", data);
+})
+.catch(error => {
+  console.log("❌ 发送失败：", error);
+});
 }
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"940f70ce6e43fa4a","version":"2025.4.0-1-g37f21b1","r":1,"token":"d7b6eff7c2a94d32972a729876ccb3e0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
